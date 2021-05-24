@@ -68,7 +68,7 @@
         <li>
             <a href="#about-the-project">SQL Script</a>
             <ul>
-                <li><a href="https://github.com/TarikSogukpinar/CarRentalDemo/blob/master/CarRental.sql">Schema</a></li>
+                <li><a href="https://github.com/TarikSogukpinar/HrmsProject/blob/master/hrms.sql">Schema</a></li>
             </ul>
         </li>
     </ol>
