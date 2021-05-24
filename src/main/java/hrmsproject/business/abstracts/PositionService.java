@@ -1,9 +1,10 @@
 package hrmsproject.business.abstracts;
 
+import hrmsproject.core.utilities.results.DataResult;
 import hrmsproject.entities.concretes.Position;
 
 import java.util.List;
 
 public interface PositionService {
-    List<Position> getAll();
+    DataResult<List<Position>> getAll();
 }
