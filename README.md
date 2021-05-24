@@ -88,10 +88,9 @@ Here's a blank template to get started:
 
 ### Built With
 
-* [EntityFrameWork]()
-* [FluentValidation]()
-* [Autofac]()
-* [Serilog]()
+* [Spring Boot]()
+* [Postgre SQL]()
+
 
 
 
