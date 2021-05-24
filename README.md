@@ -2,7 +2,7 @@
 <br />
 <p align="center">
     <a href="https://github.com/github_username/repo_name">
-        <img src="https://i.hizliresim.com/1yft7k.jpg" alt="Logo" width="1000" height="700">
+        <img src="https://i.hizliresim.com/7o7xv0j.png" alt="Logo" width="900" height="800">
     </a>
 
 <bold><h3 align="center"> » Human Resources Managment System »</h3></bold>
