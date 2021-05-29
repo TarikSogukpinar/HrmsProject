@@ -9,6 +9,7 @@ import hrmsproject.entities.concretes.Employer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.crypto.Data;
 import java.util.List;
 
 @Service
@@ -50,7 +51,7 @@ public class EmployerManager implements EmployerService {
 
     private Result employerWebSiteIfAlreadyExists(Employer employer){
         for (Employer employers:employerDao.findAll()) {
-            if (employer.getWebSite().equals(employers.getWebSite())){
+            if (employer.getWebsite().equals(employers.getWebsite())){
                 return new ErrorResult(Message.ThisWebSiteAddressIsAlreadyInTheSystem);
             }
 

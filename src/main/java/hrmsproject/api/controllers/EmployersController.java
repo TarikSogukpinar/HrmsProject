@@ -20,20 +20,23 @@ public class EmployersController {
         super();
         this.employerService = employerService;
     }
-    @GetMapping("/getallemployers")
+
+    @GetMapping("/getAllEmployers")
     public DataResult<List<Employer>> getAll() {
         return this.employerService.getAll();
     }
-    @PostMapping("/addemployers")
+
+    @PostMapping("/addEmployers")
     public Result add(@Valid @RequestBody Employer employer) {
         return this.employerService.add(employer);
     }
-    @PostMapping("/updateemployers")
+
+    @PostMapping("/updateEmployers")
     public Result update(@RequestBody Employer employer) {
         return this.employerService.update(employer);
     }
 
-    @PostMapping("/deleteemployers")
+    @PostMapping("/deleteEmployers")
     public Result delete(@RequestBody Employer employer) {
         return this.employerService.delete(employer);
     }

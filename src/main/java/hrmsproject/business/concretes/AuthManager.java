@@ -2,16 +2,18 @@ package hrmsproject.business.concretes;
 
 import hrmsproject.business.abstracts.AuthService;
 import hrmsproject.business.constants.Message;
-import hrmsproject.core.entities.concretes.User;
 import hrmsproject.core.utilities.businessrules.BusinessRules;
 import hrmsproject.core.utilities.results.*;
 import hrmsproject.dataAccess.abstracts.UserDao;
+import hrmsproject.entities.concretes.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthManager implements AuthService {
     private final UserDao userDao;
 
+    @Autowired
     public AuthManager(UserDao userDao) {
         super();
         this.userDao = userDao;

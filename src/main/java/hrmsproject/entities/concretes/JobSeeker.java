@@ -1,5 +1,7 @@
 package hrmsproject.entities.concretes;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -13,20 +15,35 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Table(name = "employees")
+@Table(name = "jobseekers")
 @Data
 @PrimaryKeyJoinColumn(name = "user_id")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Employee extends User {
+public class JobSeeker extends User {
+
 
     @NotNull
     @NotEmpty
-    @Column(name = "first_name")
+    @Column(name= "first_name")
     private String firstName;
 
     @NotNull
     @NotEmpty
-    @Column(name = "last_name")
+    @Column(name= "last_name")
     private String lastName;
+
+    @NotNull
+    @NotEmpty
+    @Column(name= "national_id")
+    private String nationalId;
+
+    @NotNull
+    @NotEmpty
+    @Column(name= "date_of_birth")
+    private LocalDate dateOfBirth;
+
+    @Column(name = "is_verified", columnDefinition = "boolean default false")
+    private boolean isVerified = false;
+
 }

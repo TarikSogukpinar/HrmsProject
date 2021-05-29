@@ -1,8 +1,8 @@
 package hrmsproject.business.abstracts;
 
-import hrmsproject.core.entities.concretes.User;
 import hrmsproject.core.utilities.results.DataResult;
 import hrmsproject.core.utilities.results.Result;
+import hrmsproject.entities.concretes.User;
 
 import java.util.List;
 

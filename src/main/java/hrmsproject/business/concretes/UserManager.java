@@ -2,15 +2,14 @@ package hrmsproject.business.concretes;
 
 import hrmsproject.business.abstracts.UserService;
 import hrmsproject.business.constants.Message;
-import hrmsproject.core.entities.concretes.User;
 import hrmsproject.core.utilities.businessrules.BusinessRules;
 import hrmsproject.core.utilities.results.*;
 import hrmsproject.core.utilities.services.abstracts.EmailService;
 import hrmsproject.core.utilities.services.abstracts.IdentityValidationService;
 import hrmsproject.dataAccess.abstracts.UserDao;
+import hrmsproject.entities.concretes.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -37,7 +36,6 @@ public class UserManager implements UserService {
     @Override
     public Result add(User user) throws Exception {
         var result = BusinessRules.RunBusinessRules(userEmailIfAlreadyExists(user),
-                userNationalIdIfAlreadyExists(user),
                 sendEmail());
         if (result != null) {
             return result;
@@ -72,16 +70,6 @@ public class UserManager implements UserService {
         return new SuccessResult(Message.RegisterSuccess);
     }
 
-    private Result userNationalIdIfAlreadyExists(User user) {
-
-        for (User users : userDao.findAll()) {
-            if (user.getNationalId().equals(users.getNationalId())) {
-                return new ErrorResult(Message.ThisNationalIdIsUsed);
-            }
-
-        }
-        return new SuccessResult(Message.RegisterSuccess);
-    }
 
     private Result sendEmail() {
         if (this.emailService.sendEmail().isSuccess()) {

@@ -21,22 +21,22 @@ public class EmployeesController {
     }
 
 
-    @GetMapping("/getallemployee")
+    @GetMapping("/getallEmployee")
     public DataResult<List<Employee>> getAll() {
         return this.employeeService.getAll();
     }
 
-    @PostMapping("/addemployee")
+    @PostMapping("/addEmployee")
     public Result add(@Valid @RequestBody Employee employee) {
         return this.employeeService.add(employee);
     }
 
-    @PostMapping("/updateemployee")
+    @PostMapping("/updateEmployee")
     public Result update(@RequestBody Employee employee) {
         return this.employeeService.update(employee);
     }
 
-    @PostMapping("/deleteemployee")
+    @PostMapping("/deleteEmployee")
     public Result delete(@RequestBody Employee employee) {
         return this.employeeService.delete(employee);
     }
