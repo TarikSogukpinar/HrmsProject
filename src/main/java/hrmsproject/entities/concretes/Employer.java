@@ -1,59 +1,48 @@
 package hrmsproject.entities.concretes;
 
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-
-@Data
 @Entity
 @Table(name = "employers")
+@Data
+@PrimaryKeyJoinColumn(name = "user_id")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Employer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private int userId;
-
-    @Column(name = "company_id")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdverts"})
+public class Employer extends User {
+    @NotNull
     @NotEmpty
-    @NotBlank(message = "Company ID cannot be empty !")
-    private int companyId;
+    @Column(name = "company_name")
+    private String companyName;
 
+    @NotNull
+    @NotEmpty
+    @Column(name = "website")
+    private String website;
 
-    @Column(name = "web_site")
-    @NotBlank(message = "Web Site cannot be empty !")
-    private String webSite;
-
-
+    @NotNull
+    @NotEmpty
     @Column(name = "phone_number")
-    @NotEmpty
-    @NotBlank(message = "Phone Number cannot be empty !")
     private String phoneNumber;
 
-    @Column(name = "is_activated")
-    @NotEmpty
-    @NotBlank(message = "Activity status cannot be empty !")
-    private boolean isActivated;
+    @Column(name = "is_verified", columnDefinition = "boolean default false")
+    private boolean isVerified = false;
 
-    @Column(name = "company_email")
-    @NotEmpty
-    @NotBlank(message = "Email cannot be empty!")
-    @Email(message = "Email doesnt follow rules!")
-    private boolean companyEmail;
+    @OneToMany(mappedBy = "employer")
+    private List<JobAdvert> jobAdverts;
 
-    @Column(name = "password")
-    @NotEmpty
-    @NotBlank(message = "Password cannot be empty!")
-    private boolean password;
-
-    @Column(name = "confirmpassword")
-    @NotEmpty
-    @NotBlank(message = "Password cannot be empty!")
-    private boolean confirmPassword;
 }

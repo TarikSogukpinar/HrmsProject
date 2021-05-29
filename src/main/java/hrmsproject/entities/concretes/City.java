@@ -7,22 +7,24 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 @Entity
-@Table(name = "job_positions")
+@Table(name = "cities")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Position {
-
+public class City {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name = "id")
     private int id;
 
     @NotNull
-    @NotEmpty(message = "Job Title cannot be empty!")
-    @Column(name = "job_title")
-    private String jobTitle;
+    @NotEmpty
+    @Column(name = "name")
+    private String name;
 
+    @OneToMany(mappedBy = "city")
+    private List<JobAdvert> jobAdverts;
 }
