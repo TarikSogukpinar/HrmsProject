@@ -101,6 +101,11 @@ public class JobAdvertManager implements JobAdvertService {
     }
 
     @Override
+    public DataResult<List<JobAdvert>> getAllCloseJobAdvertList() {
+        return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getAllCloseJobAdvertList());
+    }
+
+    @Override
     public DataResult<List<JobAdvert>> findAllByOrderByPublishedAt() {
         return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.findAllByOrderByPublishedAtDesc());
     }

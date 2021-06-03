@@ -1,13 +1,11 @@
 package hrmsproject.api.controllers;
 
 import hrmsproject.business.abstracts.JobPositionService;
-import hrmsproject.core.utilities.results.DataResult;
-import hrmsproject.entities.concretes.JobPosition;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/jobPositions")
@@ -22,16 +20,28 @@ public class JobPositionController {
     }
 
     @GetMapping("/getAllPositions")
-    public DataResult<List<JobPosition>> getAll() {
-        return this.positionService.getAll();
+    public ResponseEntity<?> getAll() {
+        var result = this.positionService.getAll();
+        if (!result.isSuccess()) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
     @GetMapping("/getFindByJobTitle")
-    public DataResult<JobPosition> getFindByJobTitle(String title) {
-        return this.positionService.findByJobTitle(title);
+    public ResponseEntity<?> getFindByJobTitle(String title) {
+        var result = this.positionService.findByJobTitle(title);
+        if (!result.isSuccess()) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
     @GetMapping("/getFindByCreateDate")
-    public DataResult<JobPosition> findByCreatedDate(LocalDate createDate) {
-        return this.positionService.findByCreatedDate(createDate);
+    public ResponseEntity<?> findByCreatedDate(LocalDate createDate) {
+        var result = this.positionService.findByCreatedDate(createDate);
+        if (!result.isSuccess()) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
 

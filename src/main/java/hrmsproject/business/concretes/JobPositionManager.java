@@ -29,7 +29,6 @@ public class JobPositionManager implements JobPositionService {
 
     @Override
     public DataResult<List<JobPosition>> getAll() {
-
         return new SuccessDataResult<List<JobPosition>>(this.positionDao.findAll(), Message.DataListed);
     }
 

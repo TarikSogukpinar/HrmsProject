@@ -38,17 +38,17 @@ public class JobPosition {
 
     @NotNull
     @NotEmpty
-    @Column(name= "created_at", columnDefinition = "Date default CURRENT_DATE")
+    @Column(name= "created_at")
     private LocalDate createdDate = LocalDate.now();
 
     @NotNull
     @NotEmpty
-    @Column(name= "is_active", columnDefinition = "boolean default true")
+    @Column(name= "is_active")
     private boolean isActive = true;
 
     @NotNull
     @NotEmpty
-    @Column(name= "is_deleted", columnDefinition = "boolean default false")
+    @Column(name= "is_deleted")
     private boolean isDeleted = false;
 
     @OneToMany(mappedBy = "jobPosition")

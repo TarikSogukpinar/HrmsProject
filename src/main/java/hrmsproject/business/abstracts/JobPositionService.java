@@ -2,7 +2,6 @@ package hrmsproject.business.abstracts;
 
 import hrmsproject.core.utilities.results.DataResult;
 import hrmsproject.core.utilities.results.Result;
-import hrmsproject.entities.concretes.JobAdvert;
 import hrmsproject.entities.concretes.JobPosition;
 
 import java.time.LocalDate;

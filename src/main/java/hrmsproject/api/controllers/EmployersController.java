@@ -1,14 +1,12 @@
 package hrmsproject.api.controllers;
 
 import hrmsproject.business.abstracts.EmployerService;
-import hrmsproject.core.utilities.results.DataResult;
-import hrmsproject.core.utilities.results.Result;
 import hrmsproject.entities.concretes.Employer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/employers")
@@ -22,22 +20,38 @@ public class EmployersController {
     }
 
     @GetMapping("/getAllEmployers")
-    public DataResult<List<Employer>> getAll() {
-        return this.employerService.getAll();
+    public ResponseEntity<?> getAll() {
+        var result =  this.employerService.getAll();
+        if (!result.isSuccess()) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping("/addEmployers")
-    public Result add(@Valid @RequestBody Employer employer) {
-        return this.employerService.add(employer);
+    public ResponseEntity<?> add(@Valid @RequestBody Employer employer) {
+        var result = this.employerService.add(employer);
+        if (!result.isSuccess()) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping("/updateEmployers")
-    public Result update(@RequestBody Employer employer) {
-        return this.employerService.update(employer);
+    public ResponseEntity<?> update(@RequestBody Employer employer) {
+        var result = this.employerService.update(employer);
+        if (!result.isSuccess()) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping("/deleteEmployers")
-    public Result delete(@RequestBody Employer employer) {
-        return this.employerService.delete(employer);
+    public ResponseEntity<?> delete(@RequestBody Employer employer) {
+        var result = this.employerService.delete(employer);
+        if (!result.isSuccess()) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 }

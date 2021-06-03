@@ -5,6 +5,7 @@ import hrmsproject.core.utilities.results.DataResult;
 import hrmsproject.core.utilities.results.Result;
 import hrmsproject.entities.concretes.JobAdvert;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,43 +24,86 @@ public class JobAdvertController {
 
 
     @PostMapping("/add")
-
-    public Result add(@RequestBody JobAdvert jobAdvert){
-        return this.jobAdvertService.add(jobAdvert);
+    public ResponseEntity<?> add(@RequestBody JobAdvert jobAdvert) {
+        var result = this.jobAdvertService.add(jobAdvert);
+        if (!result.isSuccess()) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/getAll")
-    public DataResult<List<JobAdvert>> getAll(){
-        return this.jobAdvertService.getAll();
+    public ResponseEntity<?> getAll() {
+        var result = this.jobAdvertService.getAll();
+        if (!result.isSuccess()) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/findBySalaryMax")
-    public DataResult<JobAdvert> findBySalaryMax(int maxSalary){
-        return this.jobAdvertService.findBySalaryMax(maxSalary);
+    public ResponseEntity<?> findBySalaryMax(int maxSalary) {
+        var result = this.jobAdvertService.findBySalaryMax(maxSalary);
+        if (!result.isSuccess()) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
+
     @GetMapping("/findBySalaryMin")
-    public DataResult<JobAdvert> findBySalaryMin(int minSalary){
-        return this.jobAdvertService.findBySalaryMin(minSalary);
+    public ResponseEntity<?> findBySalaryMin(int minSalary) {
+        var result = this.jobAdvertService.findBySalaryMin(minSalary);
+        if (!result.isSuccess()) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
+
     @GetMapping("/findByEmployerId")
-    public DataResult<JobAdvert> findByEmployerId(int id){
-        return this.jobAdvertService.findByEmployerId(id);
+    public ResponseEntity<?> findByEmployerId(int id) {
+        var result = this.jobAdvertService.findByEmployerId(id);
+        if (!result.isSuccess()) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
 
     @PostMapping("/changeOpenToClose")
-    public Result changeOpenToClose(int id){
-        return this.jobAdvertService.changeOpenToClose(id);
+    public ResponseEntity<?> changeOpenToClose(int id) {
+        var result = this.jobAdvertService.changeOpenToClose(id);
+        if (!result.isSuccess()) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/getAllOpenJobAdvertList")
-    public DataResult<List<JobAdvert>> getAllOpenJobAdvertList(){
-        return this.jobAdvertService.getAllOpenJobAdvertList();
+    public ResponseEntity<?> getAllOpenJobAdvertList() {
+        var result = this.jobAdvertService.getAllOpenJobAdvertList();
+        if (!result.isSuccess()) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/getAllCloseJobAdvertList")
+    public ResponseEntity<?> getAllCloseJobAdvertList() {
+        var result = this.jobAdvertService.getAllCloseJobAdvertList();
+        if (!result.isSuccess()) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
+    }
+
+
     @GetMapping("/findAllByOrderByPublishedAt")
-    public DataResult<List<JobAdvert>> findAllByOrderByPublishedAt(){
-        return this.jobAdvertService.findAllByOrderByPublishedAt();
+    public ResponseEntity<?> findAllByOrderByPublishedAt() {
+        var result = this.jobAdvertService.findAllByOrderByPublishedAt();
+        if (!result.isSuccess()) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
 

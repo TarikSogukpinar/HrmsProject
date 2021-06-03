@@ -3,7 +3,9 @@ package hrmsproject.business.concretes;
 import hrmsproject.business.abstracts.JobSeekerService;
 import hrmsproject.business.constants.Message;
 import hrmsproject.core.utilities.results.DataResult;
+import hrmsproject.core.utilities.results.Result;
 import hrmsproject.core.utilities.results.SuccessDataResult;
+import hrmsproject.core.utilities.results.SuccessResult;
 import hrmsproject.dataAccess.abstracts.JobSeekerDao;
 import hrmsproject.entities.concretes.JobSeeker;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,22 +30,28 @@ public class JobSeekerManager implements JobSeekerService {
     }
 
     @Override
+    public Result add(JobSeeker jobSeeker) {
+        this.jobSeekerDao.save(jobSeeker);
+        return new SuccessResult("CV Başarılı ile eklendi");
+    }
+
+    @Override
     public DataResult<JobSeeker> findJobSeekerByFirstName(String seekerFirstName) {
-        return new SuccessDataResult<JobSeeker>(this.jobSeekerDao.findJobSeekerByFirstName(seekerFirstName),Message.FindJobSeekerFirstNameSuccess);
+        return new SuccessDataResult<JobSeeker>(this.jobSeekerDao.findJobSeekerByFirstName(seekerFirstName), Message.FindJobSeekerFirstNameSuccess);
     }
 
     @Override
     public DataResult<JobSeeker> findJobSeekerByLastName(String seekerLastName) {
-        return new SuccessDataResult<JobSeeker>(this.jobSeekerDao.findJobSeekerByLastName(seekerLastName),Message.FindJobSeekerLastNameSuccess);
+        return new SuccessDataResult<JobSeeker>(this.jobSeekerDao.findJobSeekerByLastName(seekerLastName), Message.FindJobSeekerLastNameSuccess);
     }
 
     @Override
     public DataResult<JobSeeker> findJobSeekerDateOfBirth(LocalDate dateOfBirth) {
-        return new SuccessDataResult<JobSeeker>(this.jobSeekerDao.findJobSeekerByDateOfBirth(dateOfBirth),Message.FindDateOfBirthSuccess);
+        return new SuccessDataResult<JobSeeker>(this.jobSeekerDao.findJobSeekerByDateOfBirth(dateOfBirth), Message.FindDateOfBirthSuccess);
     }
 
     @Override
     public DataResult<JobSeeker> findJobSeekerByNationalId(String nationalId) {
-        return new SuccessDataResult<JobSeeker>(this.jobSeekerDao.findJobSeekerByNationalId(nationalId),Message.FindNationalIdSuccess);
+        return new SuccessDataResult<JobSeeker>(this.jobSeekerDao.findJobSeekerByNationalId(nationalId), Message.FindNationalIdSuccess);
     }
 }

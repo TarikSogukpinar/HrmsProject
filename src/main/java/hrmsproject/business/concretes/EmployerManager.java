@@ -9,7 +9,6 @@ import hrmsproject.entities.concretes.Employer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.crypto.Data;
 import java.util.List;
 
 @Service
